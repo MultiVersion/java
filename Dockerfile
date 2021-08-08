@@ -1,6 +1,5 @@
 FROM alpine
-LABEL author="Dviih, dviih@dviih.email" project="MultiVersion/java" release="PreLTS-2108-1"
-LABEL org.opencontainers.image.source https://github.com/MultiVersion/java
+LABEL org.opencontainers.image.source="https://github.com/MultiVersion/java" org.opencontainers.image.source="https://dviih.technology/multiversion" org.opencontainers.image.version="PreLTS" org.opencontainers.image.revision="2108-1" org.opencontainers.image.authors="Dviih" org.opencontainers.image.licenses="unlicense.org"
 
 ADD ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
