@@ -8,7 +8,9 @@ if [[ ! $(md5sum -c md5sums.txt 2>/dev/null | grep OK$ | awk '{print $2}') == "O
   wget -q https://multiversion.dviih.software/${D_VARIANT,,}-$D_MINECRAFT_VERSION.jar -O $SERVER_JARFILE
 fi
 if [ "$D_MINECRAFT_VERSION" \> "1.16" ]; then
-  java16 -jar $SERVER_JARFILE -Xms64M -Xmx${SERVER_MEMORY}M
+  java16 -version
+  java16 -Xms64M -Xmx${SERVER_MEMORY}M -jar $SERVER_JARFILE
 else
-  java8 -jar $SERVER_JARFILE -Xms64M -Xmx${SERVER_MEMORY}M
+  java8 -version
+  java8 -Xms64M -Xmx${SERVER_MEMORY}M -jar $SERVER_JARFILE
 fi
