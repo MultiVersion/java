@@ -1,4 +1,4 @@
-#! /bin/ash
+#! /bin/bash
 cd /home/container
 wget -q https://multiversion.dviih.software/md5sums.txt -O md5sums.txt
 echo "MultiVersion | dviih.technology/multiversion"
