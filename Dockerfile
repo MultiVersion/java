@@ -1,5 +1,5 @@
 FROM alpine
-LABEL author="Dviih, dviih@dviih.email" project="MultiVersion/java" release="b3"
+LABEL author="Dviih, dviih@dviih.email" project="MultiVersion/java" release="PreLTS-2108-1"
 LABEL org.opencontainers.image.source https://github.com/MultiVersion/java
 
 ADD ./entrypoint.sh /entrypoint.sh
