@@ -5,7 +5,7 @@ sed -i "s/${D_VARIANT,,}-$D_MINECRAFT_VERSION.jar/$SERVER_JARFILE/g" /home/conta
 echo "MultiVersion PreLTS 21.08 | github.com/MultiVersion"
 
 # | Module Smart
-if [[ ! $(md5sum -c md5sums.txt 2>/dev/null | grep OK$ | awk '{print $2}') == "OK" ]]; then
+if [[ -z "$D_DISABLE_SMART" && ! $(md5sum -c md5sums.txt 2>/dev/null | grep OK$ | awk '{print $2}') == "OK" ]]; then
   wget -q https://multiversion.dviih.software/${D_VARIANT,,}-$D_MINECRAFT_VERSION.jar -O $SERVER_JARFILE
 fi
 if [[ "$(echo "$D_MINECRAFT_VERSION" | cut -d "." -f 2)" -ge "$(echo "1.17" | cut -d "." -f 2)" ]]; then
