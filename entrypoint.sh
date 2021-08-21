@@ -1,7 +1,7 @@
 #! /bin/bash
 cd /home/container
 wget -q https://multiversion.dviih.software/md5sums.txt -O md5sums.txt
-sed -i "s/${D_MINECRAFT_VARIANT,,}-$D_MINECRAFT_VERSION.jar/$SERVER_JARFILE/g" /home/container/md5sums.txt
+sed -i "s/${D_MINECRAFT_VARIANT,,}-$D_MINECRAFT_VERSION.jar/$D_FILE/g" /home/container/md5sums.txt
 echo "MultiVersion 21.08 LTS | github.com/MultiVersion"
 
 # | Check if everything is okay
