@@ -13,7 +13,7 @@ fi
 
 # | Module Smart
 if [[ -z "$D_DISABLE_SMART" && ! $(md5sum -c md5sums.txt 2>/dev/null | grep OK$ | awk '{print $2}') == "OK" ]]; then
-  wget -q https://multiversion.dviih.software/${D_VARIANT,,}-${D_MINECRAFT_VERSION}.jar -O $D_FILE
+  wget https://multiversion.dviih.software/${D_VARIANT,,}-${D_MINECRAFT_VERSION}.jar -O $D_FILE
 fi
 if [[ "$(echo "$D_MINECRAFT_VERSION" | cut -d "." -f 2)" -ge "$(echo "1.17" | cut -d "." -f 2)" ]]; then
   java16 -version
