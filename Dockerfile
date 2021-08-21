@@ -4,7 +4,10 @@ LABEL org.opencontainers.image.source="https://github.com/MultiVersion/java" org
 ADD ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && apk add --no-cache openjdk8 openjdk16 bash && mv /usr/lib/jvm/java-1.8-openjdk/bin/java /usr/lib/jvm/java-1.8-openjdk/bin/java8 && mv /usr/lib/jvm/java-16-openjdk/bin/java /usr/lib/jvm/java-16-openjdk/bin/java16
+RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \ 
+  apk add --no-cache openjdk8 openjdk16 bash && \
+  mv /usr/lib/jvm/java-1.8-openjdk/bin/java /usr/lib/jvm/java-1.8-openjdk/bin/java8 && \ 
+  mv /usr/lib/jvm/java-16-openjdk/bin/java /usr/lib/jvm/java-16-openjdk/bin/java16
 
 RUN adduser --disabled-password --home /home/container container
 USER container
