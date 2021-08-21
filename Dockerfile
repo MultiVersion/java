@@ -4,8 +4,7 @@ LABEL org.opencontainers.image.source="https://github.com/MultiVersion/java" org
 ADD ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-RUN apk add --no-cache openjdk8="8.282.08-r1" bash
-RUN mv /usr/lib/jvm/java-1.8-openjdk/bin/java /usr/lib/jvm/java-1.8-openjdk/bin/java8
+RUN apk add --no-cache openjdk8="8.282.08-r1" bash && mv /usr/lib/jvm/java-1.8-openjdk/bin/java /usr/lib/jvm/java-1.8-openjdk/bin/java8
 
 COPY --from=openjdk:16-jdk-alpine /opt/openjdk-16 /usr/lib/jvm/java-1.16-openjdk
 RUN mv /usr/lib/jvm/java-1.16-openjdk/bin/java /usr/lib/jvm/java-1.16-openjdk/bin/java16
