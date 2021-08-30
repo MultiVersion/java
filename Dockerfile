@@ -1,5 +1,5 @@
-FROM alpine
-LABEL org.opencontainers.image.source="https://github.com/MultiVersion/java" org.opencontainers.image.source="https://dviih.technology/multiversion" org.opencontainers.image.version="PreLTS" org.opencontainers.image.revision="2108-1" org.opencontainers.image.authors="Dviih" org.opencontainers.image.licenses="unlicense.org"
+FROM alpine:3.14.1
+LABEL org.opencontainers.image.source="https://github.com/MultiVersion/java" org.opencontainers.image.source="https://dviih.technology/multiversion" org.opencontainers.image.version="21.08" org.opencontainers.image.revision="LTS" org.opencontainers.image.authors="Dviih" org.opencontainers.image.licenses="unlicense.org"
 
 ADD ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh

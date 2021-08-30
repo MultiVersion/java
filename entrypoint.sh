@@ -1,6 +1,6 @@
 #! /bin/bash
 cd /home/container
-if [[ ! -z $D_DISABLE_SMART ]]; then
+if [[ -z $D_DISABLE_SMART ]]; then
   wget -q https://multiversion.dviih.software/md5sums.txt -O md5sums.txt
   sed -i "s/${D_MINECRAFT_VARIANT,,}-$D_MINECRAFT_VERSION.jar/$D_FILE/g" /home/container/md5sums.txt
 fi
@@ -17,6 +17,7 @@ if [[ -z "$D_DISABLE_SMART" && ! $(md5sum -c md5sums.txt 2>/dev/null | grep OK$ 
   wget -q https://multiversion.dviih.software/${D_MINECRAFT_VARIANT,,}-${D_MINECRAFT_VERSION}.jar -O $D_FILE
 fi
 # | Server Startup
+echo "eula=true" > eula.txt # Auto eula
 if [[ "$(echo "$D_MINECRAFT_VERSION" | cut -d "." -f 2)" -ge "$(echo "1.17" | cut -d "." -f 2)" ]]; then
   java16 -version
   java16 -Xms64M -Xmx${SERVER_MEMORY}M -jar $D_FILE
@@ -26,3 +27,4 @@ else
   java8 -Xms64M -Xmx${SERVER_MEMORY}M -jar $D_FILE
   exit 1
 fi
+exit 1
