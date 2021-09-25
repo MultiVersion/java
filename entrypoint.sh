@@ -7,6 +7,11 @@ fi
 
 echo "MultiVersion 21.09 | github.com/MultiVersion"
 
+# Check if the server is using latest tag
+if [[ ${D_MINECRAFT_VARIANT,,} == "latest" ]]; then
+  echo "You're using LATEST tag, that means your server will be always updated."
+fi
+
 # | Check if everything is okay
 if [[ -z $D_MINECRAFT_VERSION || -z $D_MINECRAFT_VARIANT ]]; then
   echo "You need to put what you want in startup tab!"
@@ -18,7 +23,7 @@ if [[ -z "$D_DISABLE_SMART" && ! $(md5sum -c md5sums.txt 2>/dev/null | grep OK$ 
 fi
 # | Server Startup
 echo "eula=true" > eula.txt # Auto eula
-if [[ "$(echo "$D_MINECRAFT_VERSION" | cut -d "." -f 2)" -ge "$(echo "1.17" | cut -d "." -f 2)" ]]; then
+if [[ "$(echo "$D_MINECRAFT_VERSION" | cut -d "." -f 2)" -ge "$(echo "1.17" | cut -d "." -f 2)" || ${D_MINECRAFT_VERSION,,} == "latest" ]]; then
   java16 -version
   java16 -Xms64M -Xmx${SERVER_MEMORY}M -jar $D_FILE
   exit 1
