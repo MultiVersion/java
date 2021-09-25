@@ -1,11 +1,11 @@
 #! /bin/bash
 cd /home/container
 if [[ -z $D_DISABLE_SMART ]]; then
-  wget -q https://multiversion.dviih.software/md5sums.txt -O md5sums.txt
+  wget --no-check-certificate -q https://multiversion.dviih.software/md5sums.txt -O md5sums.txt
   sed -i "s/${D_MINECRAFT_VARIANT,,}-$D_MINECRAFT_VERSION.jar/$D_FILE/g" /home/container/md5sums.txt
 fi
 
-echo "MultiVersion 21.08 LTS | github.com/MultiVersion"
+echo "MultiVersion 21.09 | github.com/MultiVersion"
 
 # | Check if everything is okay
 if [[ -z $D_MINECRAFT_VERSION || -z $D_MINECRAFT_VARIANT ]]; then
@@ -14,7 +14,7 @@ if [[ -z $D_MINECRAFT_VERSION || -z $D_MINECRAFT_VARIANT ]]; then
 fi
 # | Module Smart
 if [[ -z "$D_DISABLE_SMART" && ! $(md5sum -c md5sums.txt 2>/dev/null | grep OK$ | awk '{print $2}') == "OK" ]]; then
-  wget -q https://multiversion.dviih.software/${D_MINECRAFT_VARIANT,,}-${D_MINECRAFT_VERSION}.jar -O $D_FILE
+  wget --no-check-certificate -q https://multiversion.dviih.software/${D_MINECRAFT_VARIANT,,}-${D_MINECRAFT_VERSION}.jar -O $D_FILE
 fi
 # | Server Startup
 echo "eula=true" > eula.txt # Auto eula
